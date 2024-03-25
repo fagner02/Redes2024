@@ -1,0 +1,12 @@
+O trabalho final de redes, individual, é a implementação ORIGINAL de um programa útil que faça comunicação por rede via socket.
+Pode ser implementado em qualquer linguagem de programação que tenha comunicação por sockets.
+Pode ser um jogo, pode ser outra coisa. Pode usar bibliotecas de funções.
+Não pode ser feito usando outro tipo de comunicação, diferente de sockets. Não pode ser a apresentação de algo que você já fez antes.
+Não pode copiar sprites/artes de outro lugar, exceto se for sprite/arte de licença livre (creative commons ou similar).
+
+O tema do trabalho deve ser combinado com o professor até o dia 31 de Maio (arthur@ufc.br) e após a aceitação o professor irá definir os requisitos mínimos do trabalho e também os possíveis pontos extras (o limite máximo de pontos extras é 3 e a nota máxima no trabalho é 12).
+
+O trabalho deverá ser apresentado, funcionando, em 5 a 10 minutos, durante a aula até o dia 20 de Junho e o código deve enviado para o professor (por e-mail ou colocado publicamente no GitHub).
+Apresentações que desrespeitem direitos humanos perdem pontos.
+
+A nota do trabalho vale como 3a nota e o aluno recebe no mesmo dia da apresentação. Caso o aluno não goste da nota, pode optar por fazer a 3a prova e aí vale a nota da 3a prova (mesmo que seja menor que a do trabalho).
