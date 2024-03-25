@@ -17,8 +17,8 @@
 #include <time.h>
 
 int main(int argc, char* argv[]) {
-    if (argc < 3) {
-        printf("missing ip or port");
+    if (argc < 2) {
+        printf("missing ip argument");
         return 0;
     }
     struct sockaddr_in info;
@@ -31,7 +31,6 @@ int main(int argc, char* argv[]) {
 #ifdef _WIN32
     WORD wVersionRequested;
     WSADATA wsaData;
-    int err;
 
     wVersionRequested = MAKEWORD(2, 2);
     WSAStartup(
@@ -52,8 +51,8 @@ int main(int argc, char* argv[]) {
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
-
-    int n = getaddrinfo(argv[1], argv[2], &hints, &result);
+    char* port = "7658";
+    int n = getaddrinfo(argv[1], port, &hints, &result);
     if (n != 0) {
         printf("Could not get address\n");
         return 0;
@@ -61,15 +60,15 @@ int main(int argc, char* argv[]) {
     struct sockaddr_in* addr = (struct sockaddr_in*)result->ai_addr;
     printf("Connecting to IP %s on port: %d\n", inet_ntoa(addr->sin_addr), htons(addr->sin_port));
 
-    char buffer[1000];
+    // char buffer[1000];
 
     if (connect(socket_entrada, result->ai_addr, result->ai_addrlen) == 0) {
-        scanf("%1000[^\n]%*c", buffer);
+        // scanf("%1000[^\n]%*c", buffer);
 
-        n = send(socket_entrada, buffer, 10, MSG_OOB);
-        if (n == -1) {
-            printf("error writing");
-        }
+        // n = send(socket_entrada, buffer, 10, MSG_OOB);
+        // if (n == -1) {
+        //     printf("error writing");
+        // }
         close(socket_entrada);
     } else {
         printf("Vixe! Impossivel usar o endereco.\n"); exit(1);
