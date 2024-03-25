@@ -17,7 +17,7 @@
 #include <time.h>
 
 int main(int argc, char* argv[]) {
-    if(argc < 3){
+    if (argc < 3) {
         printf("missing ip or port");
         return 0;
     }
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
     hints.ai_protocol = IPPROTO_TCP;
 
     int n = getaddrinfo(argv[1], argv[2], &hints, &result);
-    if(n !=0){
+    if (n != 0) {
         printf("Could not get address\n");
         return 0;
     }

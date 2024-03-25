@@ -42,7 +42,6 @@ int main() {
     tamanho_estrutura_socket = sizeof(info);
 
     if (bind(socket_entrada, (struct sockaddr*)&info, sizeof(info)) == 0) {
-        printf("%s", inet_ntoa(info.sin_addr));
         listen(socket_entrada, 5);
         while (1) {
             socket_conexao = accept(socket_entrada, (struct sockaddr*)&info, &tamanho_estrutura_socket);
