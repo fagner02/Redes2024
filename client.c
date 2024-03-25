@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #ifdef _WIN32
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #else
+#ifndef __USE_XOPEN2K
+#define __USE_XOPEN2K
+#endif
+#include <netdb.h>
 #include <sys/types.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
@@ -13,6 +17,10 @@
 #include <time.h>
 
 int main(int argc, char* argv[]) {
+    if(argc < 3){
+        printf("missing ip or port");
+        return 0;
+    }
     struct sockaddr_in info;
     int socket_entrada, socket_conexao;
     int tamanho_estrutura_socket;
@@ -38,14 +46,18 @@ int main(int argc, char* argv[]) {
         printf("Vixe!\n");
         exit(1);
     }
-    struct addrinfo* result = NULL, hints;
+    struct addrinfo* result = NULL;
+    struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
 
     int n = getaddrinfo(argv[1], argv[2], &hints, &result);
-
+    if(n !=0){
+        printf("Could not get address\n");
+        return 0;
+    }
     struct sockaddr_in* addr = (struct sockaddr_in*)result->ai_addr;
     printf("Connecting to IP %s on port: %d\n", inet_ntoa(addr->sin_addr), htons(addr->sin_port));
 
@@ -55,7 +67,7 @@ int main(int argc, char* argv[]) {
         scanf("%1000[^\n]%*c", buffer);
 
         n = send(socket_entrada, buffer, 10, MSG_OOB);
-        if (n == SOCKET_ERROR) {
+        if (n == -1) {
             printf("error writing");
         }
         close(socket_entrada);
