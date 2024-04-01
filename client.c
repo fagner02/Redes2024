@@ -29,10 +29,9 @@ int main(int argc, char* argv[]) {
     data_e_hora_por_extenso = malloc(26 * sizeof(char));
 
 #ifdef _WIN32
-    WORD wVersionRequested;
+    WORD wVersionRequested = MAKEWORD(2, 2);
     WSADATA wsaData;
 
-    wVersionRequested = MAKEWORD(2, 2);
     WSAStartup(
         wVersionRequested,
         &wsaData
