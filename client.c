@@ -18,7 +18,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        printf("missing ip argument");
+        printf("Missing IP argument");
         return 0;
     }
     struct sockaddr_in info;
