@@ -59,15 +59,7 @@ int main(int argc, char* argv[]) {
     struct sockaddr_in* addr = (struct sockaddr_in*)result->ai_addr;
     printf("Connecting to IP %s on port: %d\n", inet_ntoa(addr->sin_addr), htons(addr->sin_port));
 
-    // char buffer[1000];
-
     if (connect(socket_entrada, result->ai_addr, result->ai_addrlen) == 0) {
-        // scanf("%1000[^\n]%*c", buffer);
-
-        // n = send(socket_entrada, buffer, 10, MSG_OOB);
-        // if (n == -1) {
-        //     printf("error writing");
-        // }
         close(socket_entrada);
     } else {
         printf("Vixe! Impossivel usar o endereco.\n"); exit(1);
